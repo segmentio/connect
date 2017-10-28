@@ -21,7 +21,7 @@ type Server struct {
 
 // New creates a new Server, initializes it and returns it.
 func NewHttpServer(p ProcessFunc) *Server {
-	api := &Server{processFunc: p}
+	api := &Server{processFunc: p, App: app.New()}
 	api.Use(logger.New())
 	api.Post("/listen", api.requestHandler)
 	return api
